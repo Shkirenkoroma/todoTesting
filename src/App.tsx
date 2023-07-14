@@ -5,7 +5,6 @@ import './App.less';
 
 const App: FC = (): JSX.Element => {
   const [noties, setNoties] = useState<string>('');
-  const [activeModal, setActiveModal] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
 
   return (
@@ -15,8 +14,6 @@ const App: FC = (): JSX.Element => {
         <Input
           setNoties={setNoties}
           notiesData={noties}
-          setActiveModal={setActiveModal}
-          activeModal={activeModal}
           error={error}
           setError={setError}
         />

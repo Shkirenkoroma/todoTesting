@@ -8,17 +8,13 @@ import './style.less'
 export interface IPropsInput {
   setNoties: (e: string) => void
   notiesData: string
-  setActiveModal: (e: boolean) => void
-  activeModal: boolean
   error: boolean
-  setError: (e: boolean) => void
+  setError: (e:boolean) => void
 }
 
 const Input: FC<IPropsInput> = ({
   setNoties,
   notiesData,
-  setActiveModal,
-  activeModal,
   error,
   setError,
 }): JSX.Element => {
@@ -37,24 +33,20 @@ const Input: FC<IPropsInput> = ({
 
   const saveNoties = () => {
     const isSameNote = notiesArray.some(
-      (item: any) => item.value === notiesData,
+      (item) => item.value === notiesData,
     )
     if (!isSameNote && !!notiesData) {
       dispatch(getNoties(notiesItem))
-    } else if (!!isSameNote) {
-      setActiveModal(!activeModal)
-    } else setError(!error)
+    }  else setError(!error)
   }
 
   const handleChange = (e: KeyboardEvent): void => {
     const isSameNote = notiesArray.some(
-      (item: any) => item.value === notiesData,
+      (item) => item.value === notiesData,
     )
     if (e.key === 'Enter') {
       if (!isSameNote && !!notiesData) {
         dispatch(getNoties(notiesItem))
-      } else if (!!isSameNote) {
-        setActiveModal(!activeModal)
       } else setError(!error)
     }
   }
