@@ -1,6 +1,10 @@
 import { FC } from 'react';
-import { IEditInputProps } from 'types';
 import './style.less';
+
+export interface IEditInputProps {
+	value: string;
+	onChange: (e: string) => void;
+}
 
 const EditInput: FC<IEditInputProps> = ({
   value,

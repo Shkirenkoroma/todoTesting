@@ -1,5 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IPropsMapping, Note, NotiesState } from 'types';
+
+export type NotiesState = {
+  noties: Note[]
+}
+
+export interface IPropsMapping {
+  id: number
+  value: string
+}
+
+export type Note = {
+  id: number
+  value: string
+}
 
 const initialState: NotiesState = {
   noties: [],
@@ -27,5 +40,4 @@ const notiesSlice = createSlice({
 });
 
 export const notiesReducer = notiesSlice.reducer;
-export const { getNoties, deleteNote, saveNoties } =
-	notiesSlice.actions;
+export const { getNoties, deleteNote, saveNoties } = notiesSlice.actions;

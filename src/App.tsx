@@ -3,14 +3,14 @@ import NotiesLayout from 'components/elements/noties';
 import Input from './components/input';
 import './App.less';
 
-const App:FC = ():JSX.Element => {
+const App: FC = (): JSX.Element => {
   const [noties, setNoties] = useState<string>('');
   const [activeModal, setActiveModal] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
 
   return (
     <div className="container">
-      <h1 className="container__title">Note Book</h1>
+      <h1 className="container__title">Todo List</h1>
       <div className="container__content">
         <Input
           setNoties={setNoties}

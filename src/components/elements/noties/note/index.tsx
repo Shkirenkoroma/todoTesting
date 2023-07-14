@@ -3,8 +3,12 @@ import { useDispatch } from 'react-redux';
 import { deleteNote, saveNoties } from 'redux/reducers';
 import Button from 'components/button';
 import EditInput from 'components/elements/edit';
-import {  IPropsNote } from 'types';
 import './style.less';
+
+export interface IPropsNote {
+  item: string
+  specificId: number
+}
 
 const Note: FC<IPropsNote> = ({ item, specificId }): JSX.Element => {
   const [edit, setEdit] = useState<boolean>(false);
@@ -32,13 +36,11 @@ const Note: FC<IPropsNote> = ({ item, specificId }): JSX.Element => {
   return (
     <div className="container__note">
       {edit ? (
-        <EditInput
-          value={valueEdit}
-          onChange={setValueEdit}
-        />
+        <EditInput value={valueEdit} onChange={setValueEdit} />
       ) : (
         <div className="container____content__note">
           <span className="container__content__note-text">{item}</span>
+          <input type="checkbox" name="" id="" />
         </div>
       )}
       <div className="container____content__buttons">
