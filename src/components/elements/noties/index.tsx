@@ -1,8 +1,8 @@
-import { FC, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { noties } from 'redux/selectors';
-import Note from './note';
-import './style.less';
+import { FC } from 'react'
+import { useSelector } from 'react-redux'
+import { noties } from 'redux/selectors'
+import Note from './note'
+import './style.less'
 
 export interface IPropsMapping {
   id: number
@@ -10,22 +10,15 @@ export interface IPropsMapping {
 }
 
 const NotiesLayout: FC = (): JSX.Element => {
-  const notiesArray = useSelector(noties);
-  const [filteredArrays, setFilteredArrays] = useState<any | undefined>([]);
-
-  useEffect(() => {
-    setFilteredArrays(notiesArray);
-  }, [notiesArray]);
+  const notiesArray = useSelector(noties)
 
   return (
     <div className="containerNoties">
-      <div>
-        {filteredArrays.map((item: IPropsMapping, index: number) => (
-          <Note key={index} item={item.value} specificId={item.id} />
-        ))}
-      </div>
+      {notiesArray.map((el: IPropsMapping) => (
+        <Note key={el.id} item={el.value} specificId={el.id} />
+      ))}
     </div>
-  );
-};
+  )
+}
 
-export default NotiesLayout;
+export default NotiesLayout

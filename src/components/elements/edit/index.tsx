@@ -1,21 +1,17 @@
-import { FC } from 'react';
-import './style.less';
+import { FC } from 'react'
+import './style.less'
 
 export interface IEditInputProps {
-	value: string;
-	onChange: (e: string) => void;
+  value: string
+  onChange: (e: string) => void
 }
 
-const EditInput: FC<IEditInputProps> = ({
-  value,
-  onChange,
-}): JSX.Element => {
+const EditInput: FC<IEditInputProps> = ({ value, onChange }): JSX.Element => {
   const handleChange = (value: string): void => {
-    onChange(value);
-  };
+    onChange(value)
+  }
 
   return (
-    <>
       <div className="todoItem_li">
         <input
           type="text"
@@ -23,8 +19,7 @@ const EditInput: FC<IEditInputProps> = ({
           onChange={(e) => handleChange(e.target.value)}
         />
       </div>
-    </>
-  );
-};
+  )
+}
 
-export default EditInput;
+export default EditInput

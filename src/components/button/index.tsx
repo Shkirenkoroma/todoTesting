@@ -1,22 +1,25 @@
-import { FC } from 'react';
-import './style.less';
+import { FC } from 'react'
+import './style.less'
 
 export interface IPropsButton {
   className: string
   buttonName: string
-  handleFunction: () => void
+  handleClick: () => void
 }
 
 const Button: FC<IPropsButton> = ({
   className,
   buttonName,
-  handleFunction,
+  handleClick,
 }): JSX.Element => {
+  
   return (
-    <button className={className} onClick={handleFunction}>
-      <span className="button__name">{buttonName}</span>
-    </button>
-  );
-};
+    <>
+      <button className={className} onClick={handleClick}>
+        <span className="button__name">{buttonName}</span>
+      </button>
+    </>
+  )
+}
 
-export default Button;
+export default Button

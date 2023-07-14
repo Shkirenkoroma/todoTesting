@@ -1,9 +1,9 @@
-import { FC, KeyboardEvent, ChangeEvent } from 'react';
-import Button from 'components/button';
-import { getNoties } from 'redux/reducers';
-import { useDispatch, useSelector } from 'react-redux';
-import { noties } from 'redux/selectors';
-import './style.less';
+import { FC, KeyboardEvent, ChangeEvent } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getNoties } from 'redux/reducers'
+import { noties } from 'redux/selectors'
+import Button from 'components/button'
+import './style.less'
 
 export interface IPropsInput {
   setNoties: (e: string) => void
@@ -22,44 +22,42 @@ const Input: FC<IPropsInput> = ({
   error,
   setError,
 }): JSX.Element => {
-  const notiesArray = useSelector(noties);
-  const dispatch = useDispatch();
+  const notiesArray = useSelector(noties)
+  const dispatch = useDispatch()
 
   const notiesItem = {
     id: Math.random(),
     value: notiesData,
-  };
+  }
 
   const handleNoties = (e: ChangeEvent<HTMLInputElement>): void => {
-    setNoties(e.target.value);
-    setError(false);
-  };
+    setNoties(e.target.value)
+    setError(false)
+  }
 
   const saveNoties = () => {
     const isSameNote = notiesArray.some(
       (item: any) => item.value === notiesData,
-    );
+    )
     if (!isSameNote && !!notiesData) {
-      dispatch(getNoties(notiesItem));
-      localStorage.setItem('noties', JSON.stringify(notiesArray));
+      dispatch(getNoties(notiesItem))
     } else if (!!isSameNote) {
-      setActiveModal(!activeModal);
-    } else setError(!error);
-  };
+      setActiveModal(!activeModal)
+    } else setError(!error)
+  }
 
   const handleChange = (e: KeyboardEvent): void => {
     const isSameNote = notiesArray.some(
       (item: any) => item.value === notiesData,
-    );
+    )
     if (e.key === 'Enter') {
       if (!isSameNote && !!notiesData) {
-        dispatch(getNoties(notiesItem));
-        localStorage.setItem('noties', JSON.stringify(notiesArray));
+        dispatch(getNoties(notiesItem))
       } else if (!!isSameNote) {
-        setActiveModal(!activeModal);
-      } else setError(!error);
+        setActiveModal(!activeModal)
+      } else setError(!error)
     }
-  };
+  }
 
   return (
     <>
@@ -68,15 +66,15 @@ const Input: FC<IPropsInput> = ({
         type="text"
         onChange={handleNoties}
         onKeyPress={handleChange}
-        placeholder="Введите текст"
+        placeholder="Добавьте задачу в свой личный план"
       />
       <Button
-        handleFunction={saveNoties}
+        handleClick={saveNoties}
         className="button"
         buttonName="Добавить"
       />
     </>
-  );
-};
+  )
+}
 
-export default Input;
+export default Input
