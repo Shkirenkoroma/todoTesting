@@ -41,7 +41,7 @@ const createTaskPannel = () => {
 
   return (
     <>
-      <MainInput onChange={onChange} onKeyChange={onKeyChange} value={value} />
+      <MainInput onChange={onChange} onKeyChange={onKeyChange} value={value} classProperties="input" placeholderText="Добавьте задачу в свой личный план" typeInput="type"/>
       <Button
         title="Добавить"
         className="button"

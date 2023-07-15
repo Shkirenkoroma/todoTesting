@@ -5,22 +5,28 @@ interface IMainInputProps {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
   onKeyChange: (e: KeyboardEvent) => void
   value: string
+  classProperties: string
+  placeholderText: string
+  typeInput: string
 }
 
 const MainInput: FC<IMainInputProps> = ({
   onChange,
   onKeyChange,
   value,
+  classProperties,
+  placeholderText,
+  typeInput,
 }): JSX.Element => {
   
   return (
     <>
       <input
-        className="input"
-        type="text"
+        className={classProperties}
+        type={typeInput}
         onChange={onChange}
         onKeyPress={onKeyChange}
-        placeholder="Добавьте задачу в свой личный план"
+        placeholder={placeholderText}
         value={value}
       />
     </>
