@@ -1,11 +1,11 @@
 import { useState, ChangeEvent, KeyboardEvent } from 'react'
-import { isTaskExist } from 'utils'
 import { addTask } from 'redux/reducers'
 import { tasksArray } from 'redux/selectors'
 import { useAppDispatch, useAppSelector } from 'hooks'
 import { ITask } from 'components/tasksList/task/index.types'
-import Button from 'components/button'
-import MainInput from 'components/mainInput'
+import { isTaskExist } from 'utils'
+import Button from 'shared/button'
+import Input from 'shared/input'
 
 const createTaskPannel = () => {
   const [value, setValue] = useState<string>('')
@@ -21,7 +21,7 @@ const createTaskPannel = () => {
     setValue(e.target.value)
   }
 
-  const onKeyChange = (e: KeyboardEvent): void => {
+  const onKeyDown = (e: KeyboardEvent): void => {
     const isAlreadyExist = isTaskExist(tasksList, value)
     if (e.key === 'Enter') {
       if (!isAlreadyExist && !!value) {
@@ -41,7 +41,14 @@ const createTaskPannel = () => {
 
   return (
     <>
-      <MainInput onChange={onChange} onKeyChange={onKeyChange} value={value} classProperties="input" placeholderText="Добавьте задачу в свой личный план" typeInput="type"/>
+      <Input
+        onChange={onChange}
+        onKeyDown={onKeyDown}
+        value={value}
+        classProperties="input"
+        placeholder="Добавьте задачу в свой личный план"
+        typeInput="type"
+      />
       <Button
         title="Добавить"
         className="button"

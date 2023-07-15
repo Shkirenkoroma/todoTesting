@@ -2,8 +2,8 @@ import { FC, useState } from 'react'
 import { deleteTask, saveTask } from 'redux/reducers'
 import { ITaskProps } from './index.types'
 import { useAppDispatch } from 'hooks'
-import Button from 'components/button'
-import EditInput from 'components/editInput'
+import Button from 'shared/button'
+import Input from 'shared/input'
 import './style.less'
 
 const Task: FC<ITaskProps> = ({ task }): JSX.Element => {
@@ -37,7 +37,12 @@ const Task: FC<ITaskProps> = ({ task }): JSX.Element => {
   return (
     <div className="container__task">
       {edit ? (
-        <EditInput value={valueEdit} onChange={setValueEdit} />
+        <Input
+          value={valueEdit}
+          onChange={(e) => setValueEdit(e.target.value)}
+          classProperties="editItem"
+          typeInput="type"
+        />
       ) : (
         <div className="container____content__task">
           <span
