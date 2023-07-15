@@ -1,8 +1,5 @@
-export interface ITask {
-  value: string
-  id: number
-}
+import { ITask } from "redux/reducers/index.types";
 
 export interface ITaskProps {
   task: ITask
-}
+};

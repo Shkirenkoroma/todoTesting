@@ -1,7 +1,7 @@
-import { FC } from 'react'
-import TasksList from 'components/tasksList'
-import CreateTaskPannel from 'components/createtaskspannel'
-import './App.less'
+import { FC } from 'react';
+import TasksList from 'components/tasksList';
+import CreateTaskPannel from 'components/createtaskspannel';
+import './App.less';
 
 const App: FC = (): JSX.Element => {
 
@@ -16,4 +16,4 @@ const App: FC = (): JSX.Element => {
   )
 }
 
-export default App
+export default App;

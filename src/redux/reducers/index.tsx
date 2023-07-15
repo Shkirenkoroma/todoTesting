@@ -1,10 +1,9 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { ITask } from 'components/tasksList/task/index.types'
-import { ITasksState } from './types'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ITask, ITasksState } from './index.types';
 
 const initialState: ITasksState = {
   tasks: [],
-}
+};
 
 const notiesSlice = createSlice({
   name: 'tasks',
@@ -23,7 +22,7 @@ const notiesSlice = createSlice({
       )
     },
   },
-})
+});
 
-export const notiesReducer = notiesSlice.reducer
-export const { addTask, deleteTask, saveTask } = notiesSlice.actions
+export const notiesReducer = notiesSlice.reducer;
+export const { addTask, deleteTask, saveTask } = notiesSlice.actions;

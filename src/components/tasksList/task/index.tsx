@@ -1,10 +1,10 @@
-import { FC, useState } from 'react'
-import { deleteTask, saveTask } from 'redux/reducers'
-import { ITaskProps } from './index.types'
-import { useAppDispatch } from 'hooks'
-import Button from 'shared/button'
-import Input from 'shared/input'
-import './style.less'
+import { FC, useState } from 'react';
+import { deleteTask, saveTask } from 'redux/reducers';
+import { ITaskProps } from './index.types';
+import { useAppDispatch } from 'hooks';
+import Button from 'shared/button';
+import Input from 'shared/input';
+import './style.less';
 
 const Task: FC<ITaskProps> = ({ task }): JSX.Element => {
   const [edit, setEdit] = useState<boolean>(false)
@@ -40,8 +40,8 @@ const Task: FC<ITaskProps> = ({ task }): JSX.Element => {
         <Input
           value={valueEdit}
           onChange={(e) => setValueEdit(e.target.value)}
-          classProperties="editItem"
-          typeInput="type"
+          className="editItem"
+          type="type"
         />
       ) : (
         <div className="container____content__task">
@@ -81,6 +81,6 @@ const Task: FC<ITaskProps> = ({ task }): JSX.Element => {
       </div>
     </div>
   )
-}
+};
 
-export default Task
+export default Task;

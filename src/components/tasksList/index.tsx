@@ -1,9 +1,9 @@
-import { FC } from 'react'
-import { tasksArray } from 'redux/selectors'
-import { useAppSelector } from 'hooks'
-import { ITask } from './task/index.types'
-import Task from './task'
-import './style.less'
+import { FC } from 'react';
+import { tasksArray } from 'redux/selectors';
+import { useAppSelector } from 'hooks';
+import Task from './task';
+import { ITask } from 'redux/reducers/index.types';
+import './style.less';
 
 const TasksList: FC = (): JSX.Element => {
   const tasksList = useAppSelector(tasksArray)
@@ -15,6 +15,6 @@ const TasksList: FC = (): JSX.Element => {
       ))}
     </div>
   )
-}
+};
 
-export default TasksList
+export default TasksList;

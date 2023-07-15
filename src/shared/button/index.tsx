@@ -1,11 +1,11 @@
-import { FC } from 'react'
-import './style.less'
+import { FC } from 'react';
+import './style.less';
 
 export interface IPropsButton {
   className: string
   title: string
   handleClick: () => void
-}
+};
 
 const Button: FC<IPropsButton> = ({
   className,
@@ -20,6 +20,6 @@ const Button: FC<IPropsButton> = ({
       </button>
     </>
   )
-}
+};
 
-export default Button
+export default Button;

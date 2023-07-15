@@ -1,11 +1,11 @@
-import { useState, ChangeEvent, KeyboardEvent } from 'react'
-import { addTask } from 'redux/reducers'
-import { tasksArray } from 'redux/selectors'
-import { useAppDispatch, useAppSelector } from 'hooks'
-import { ITask } from 'components/tasksList/task/index.types'
-import { isTaskExist } from 'utils'
-import Button from 'shared/button'
-import Input from 'shared/input'
+import { useState, ChangeEvent, KeyboardEvent } from 'react';
+import { addTask } from 'redux/reducers';
+import { tasksArray } from 'redux/selectors';
+import { useAppDispatch, useAppSelector } from 'hooks';
+import { isTaskExist } from 'utils';
+import Button from 'shared/button';
+import Input from 'shared/input';
+import { ITask } from 'redux/reducers/index.types';
 
 const createTaskPannel = () => {
   const [value, setValue] = useState<string>('')
@@ -45,9 +45,9 @@ const createTaskPannel = () => {
         onChange={onChange}
         onKeyDown={onKeyDown}
         value={value}
-        classProperties="input"
+        className="input"
         placeholder="Добавьте задачу в свой личный план"
-        typeInput="type"
+        type="type"
       />
       <Button
         title="Добавить"
@@ -56,6 +56,6 @@ const createTaskPannel = () => {
       />
     </>
   )
-}
+};
 
-export default createTaskPannel
+export default createTaskPannel;

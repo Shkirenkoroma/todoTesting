@@ -1,25 +1,24 @@
-import { FC, InputHTMLAttributes } from 'react'
-import './style.less'
+import { FC, InputHTMLAttributes } from 'react';
+import './style.less';
 
 interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
-  classProperties: string
-  typeInput: string
-}
+  className: string
+};
 
 const Input: FC<IInputProps> = ({
   onChange,
   onKeyDown,
   value,
-  classProperties,
+  className,
   placeholder,
-  typeInput,
+  type,
 }): JSX.Element => {
 
   return (
     <>
       <input
-        className={classProperties}
-        type={typeInput}
+        className={className}
+        type={type}
         onChange={onChange}
         onKeyPress={onKeyDown}
         placeholder={placeholder}
@@ -27,6 +26,6 @@ const Input: FC<IInputProps> = ({
       />
     </>
   )
-}
+};
 
-export default Input
+export default Input;
