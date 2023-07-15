@@ -12,7 +12,7 @@ const EditInput: FC<IEditInputProps> = ({ value, onChange }): JSX.Element => {
   }
 
   return (
-      <div className="todoItem_li">
+      <div className="editItem">
         <input
           type="text"
           value={value}

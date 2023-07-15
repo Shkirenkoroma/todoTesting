@@ -1,53 +1,48 @@
 import { FC, KeyboardEvent, ChangeEvent } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getNoties } from 'redux/reducers'
-import { noties } from 'redux/selectors'
+import { addTaskToState } from 'redux/reducers'
+import { tasksArray } from 'redux/selectors'
 import Button from 'components/button'
 import './style.less'
 
 export interface IPropsInput {
-  setNoties: (e: string) => void
-  notiesData: string
-  error: boolean
-  setError: (e:boolean) => void
+  setTasks: (e: string) => void
+  tasks: string
 }
 
 const Input: FC<IPropsInput> = ({
-  setNoties,
-  notiesData,
-  error,
-  setError,
+  setTasks,
+  tasks,
 }): JSX.Element => {
-  const notiesArray = useSelector(noties)
+  const tasksList = useSelector(tasksArray)
   const dispatch = useDispatch()
 
-  const notiesItem = {
+  const taskItem = {
     id: Math.random(),
-    value: notiesData,
+    value: tasks,
   }
 
-  const handleNoties = (e: ChangeEvent<HTMLInputElement>): void => {
-    setNoties(e.target.value)
-    setError(false)
+  const inputTask = (e: ChangeEvent<HTMLInputElement>): void => {
+    setTasks(e.target.value)
   }
 
-  const saveNoties = () => {
-    const isSameNote = notiesArray.some(
-      (item) => item.value === notiesData,
+  const addTask = () => {
+    const isAlreadyExist = tasksList.some(
+      (task) => task.value === tasks,
     )
-    if (!isSameNote && !!notiesData) {
-      dispatch(getNoties(notiesItem))
-    }  else setError(!error)
+    if (!isAlreadyExist && !!tasks) {
+      dispatch(addTaskToState(taskItem))
+    }  
   }
 
   const handleChange = (e: KeyboardEvent): void => {
-    const isSameNote = notiesArray.some(
-      (item) => item.value === notiesData,
+    const isAlreadyExist = tasksList.some(
+      (task) => task.value === tasks,
     )
     if (e.key === 'Enter') {
-      if (!isSameNote && !!notiesData) {
-        dispatch(getNoties(notiesItem))
-      } else setError(!error)
+      if (!isAlreadyExist && !!tasks) {
+        dispatch(addTaskToState(taskItem))
+      } 
     }
   }
 
@@ -56,12 +51,12 @@ const Input: FC<IPropsInput> = ({
       <input
         className="input"
         type="text"
-        onChange={handleNoties}
+        onChange={inputTask}
         onKeyPress={handleChange}
         placeholder="Добавьте задачу в свой личный план"
       />
       <Button
-        handleClick={saveNoties}
+        handleClick={addTask}
         className="button"
         buttonName="Добавить"
       />

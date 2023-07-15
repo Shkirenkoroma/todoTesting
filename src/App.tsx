@@ -1,23 +1,20 @@
 import { FC, useState } from 'react';
-import NotiesLayout from 'components/elements/noties';
+import TasksList from 'components/elements/tasks';
 import Input from './components/input';
 import './App.less';
 
 const App: FC = (): JSX.Element => {
-  const [noties, setNoties] = useState<string>('');
-  const [error, setError] = useState<boolean>(false);
+  const [tasks, setTasks] = useState<string>('');
 
   return (
     <div className="container">
       <h1 className="container__title">Todo List</h1>
       <div className="container__content">
         <Input
-          setNoties={setNoties}
-          notiesData={noties}
-          error={error}
-          setError={setError}
+          setTasks={setTasks}
+          tasks={tasks}
         />
-        <NotiesLayout />
+        <TasksList />
       </div>
     </div>
   );

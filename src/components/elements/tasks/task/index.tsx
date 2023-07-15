@@ -1,37 +1,40 @@
 import { FC, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { deleteNote, saveNoties } from 'redux/reducers'
+import { deleteTaskFromState, saveTaskToState } from 'redux/reducers'
 import Button from 'components/button'
 import EditInput from 'components/elements/edit'
 import './style.less'
 
-export interface IPropsNote {
-  item: string
-  specificId: number
+export interface IPropsTask {
+  task: 
+  {
+    value: string
+    id: number
+  }
 }
 
-const Note: FC<IPropsNote> = ({ item, specificId }): JSX.Element => {
+const Task: FC<IPropsTask> = ({ task }): JSX.Element => {
   const [edit, setEdit] = useState<boolean>(false)
-  const [valueEdit, setValueEdit] = useState<string>(item)
+  const [valueEdit, setValueEdit] = useState<string>(task.value)
   const [checked, setChecked] = useState<boolean>(false)
   const dispatch = useDispatch()
 
-  const notiesItem = {
-    id: specificId,
+  const taskItem = {
+    id: task.id,
     value: valueEdit,
   }
 
-  const editItem = (): void => {
+  const editTask = (): void => {
     setEdit(!edit)
   }
 
-  const deleteItem = (): void => {
-    dispatch(deleteNote(item))
+  const deleteTask = (): void => {
+    dispatch(deleteTaskFromState(task.value))
   }
 
-  const saveEdit = (): void => {
+  const saveEditTask = (): void => {
     setEdit(!edit)
-    dispatch(saveNoties(notiesItem))
+    dispatch(saveTaskToState(taskItem))
   }
 
   const completeTask = (): void => {
@@ -39,12 +42,18 @@ const Note: FC<IPropsNote> = ({ item, specificId }): JSX.Element => {
   }
 
   return (
-    <div className="container__note">
+    <div className="container__task">
       {edit ? (
         <EditInput value={valueEdit} onChange={setValueEdit} />
       ) : (
-        <div className="container____content__note">
-          <span className={checked ? "linethrough" : "container__content__note-text"}>{item}</span>
+        <div className="container____content__task">
+          <span
+            className={
+              checked ? 'linethrough' : 'container__content__task-text'
+            }
+          >
+            {task.value}
+          </span>
           <input
             type="checkbox"
             onChange={() => completeTask()}
@@ -55,19 +64,19 @@ const Note: FC<IPropsNote> = ({ item, specificId }): JSX.Element => {
       <div className="container____content__buttons">
         <Button
           className="button__delete"
-          handleClick={deleteItem}
+          handleClick={deleteTask}
           buttonName="Удалить"
         />
         {edit ? (
           <Button
             className="button"
-            handleClick={saveEdit}
+            handleClick={saveEditTask}
             buttonName="Сохранить"
           />
         ) : (
           <Button
             className="button"
-            handleClick={editItem}
+            handleClick={editTask}
             buttonName="Редактировать"
           />
         )}
@@ -76,4 +85,4 @@ const Note: FC<IPropsNote> = ({ item, specificId }): JSX.Element => {
   )
 }
 
-export default Note
+export default Task

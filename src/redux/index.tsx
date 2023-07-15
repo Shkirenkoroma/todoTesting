@@ -3,6 +3,6 @@ import { notiesReducer } from './reducers';
 
 export const store = configureStore({
   reducer: {
-    noties: notiesReducer,
+    tasks: notiesReducer,
   },
 });

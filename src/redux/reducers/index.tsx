@@ -1,39 +1,35 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-interface INotiesState {
-  noties: INote[]
+interface ITasksState {
+  tasks: ITask[]
 }
 
-interface IPropsMapping {
+interface ITask {
   id: number
   value: string
 }
 
-interface INote {
-  id: number
-  value: string
-}
-
-const initialState: INotiesState = {
-  noties: [],
+const initialState: ITasksState = {
+  tasks: [],
 }
 
 const notiesSlice = createSlice({
-  name: 'noties',
+  name: 'tasks',
   initialState,
   reducers: {
-    getNoties: (state, action: PayloadAction<INote>) => {
-      state.noties.push(action.payload)
+    addTaskToState: (state, action: PayloadAction<ITask>) => {
+      console.log('start action', action)
+      state.tasks.push(action.payload)
     },
-    deleteNote: (state, action: PayloadAction<string>) => {
-      state.noties = state.noties.filter(
-        (item: IPropsMapping) => item.value !== action.payload,
+    deleteTaskFromState: (state, action: PayloadAction<string>) => {
+      state.tasks = state.tasks.filter(
+        (item) => item.value !== action.payload,
       )
     },
-    saveNoties: (state, action: PayloadAction<INote>) => {
+    saveTaskToState: (state, action: PayloadAction<ITask>) => {
       const { id, value } = action.payload
-      state.noties = state.noties.map((el) =>
-        el.id === id ? { ...el, value: value } : { ...el },
+      state.tasks = state.tasks.map((task) =>
+      task.id === id ? { ...task, value: value } : { ...task },
       )
     },
   },
@@ -41,7 +37,7 @@ const notiesSlice = createSlice({
 
 export const notiesReducer = notiesSlice.reducer
 export const {
-  getNoties,
-  deleteNote,
-  saveNoties,
+  addTaskToState,
+  deleteTaskFromState,
+  saveTaskToState,
 } = notiesSlice.actions

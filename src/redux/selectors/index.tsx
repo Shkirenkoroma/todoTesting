@@ -1,14 +1,14 @@
- interface IStateNoties {
+ interface IStateTasks {
   id: number
   value: string
 }
 
- interface INoties {
-  noties: Array<IStateNoties>
+ interface ITasks {
+  tasks: Array<IStateTasks>
 }
 
  interface IState {
-  noties: INoties
+  tasks: ITasks
 }
 
-export const noties = (state: IState) => state?.noties?.noties ?? []
+export const tasksArray = (state: IState) => state?.tasks?.tasks ?? []
