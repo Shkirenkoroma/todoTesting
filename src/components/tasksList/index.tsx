@@ -1,12 +1,12 @@
 import { FC } from 'react';
 import { tasksArray } from 'redux/selectors';
 import { useAppSelector } from 'hooks';
-import Task from './task';
 import { ITask } from 'redux/reducers/index.types';
+import Task from './task';
 import './style.less';
 
 const TasksList: FC = (): JSX.Element => {
-  const tasksList = useAppSelector(tasksArray)
+  const tasksList = useAppSelector(tasksArray);
 
   return (
     <div className="containerTasks">
@@ -14,7 +14,7 @@ const TasksList: FC = (): JSX.Element => {
         <Task key={task.id} task={task} />
       ))}
     </div>
-  )
+  );
 };
 
 export default TasksList;

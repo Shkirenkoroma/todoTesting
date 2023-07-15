@@ -1,38 +1,38 @@
 import { FC, useState } from 'react';
 import { deleteTask, saveTask } from 'redux/reducers';
-import { ITaskProps } from './index.types';
 import { useAppDispatch } from 'hooks';
 import Button from 'shared/button';
 import Input from 'shared/input';
+import { ITaskProps } from './index.types';
 import './style.less';
 
 const Task: FC<ITaskProps> = ({ task }): JSX.Element => {
-  const [edit, setEdit] = useState<boolean>(false)
-  const [valueEdit, setValueEdit] = useState<string>(task.value)
-  const [checked, setChecked] = useState<boolean>(false)
-  const dispatch = useAppDispatch()
+  const [edit, setEdit] = useState<boolean>(false);
+  const [valueEdit, setValueEdit] = useState<string>(task.value);
+  const [checked, setChecked] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
 
   const taskItem = {
     id: task.id,
     value: valueEdit,
-  }
+  };
 
   const editTaskHandler = (): void => {
-    setEdit(!edit)
-  }
+    setEdit(!edit);
+  };
 
   const deleteTaskHandler = (): void => {
-    dispatch(deleteTask(task.value))
-  }
+    dispatch(deleteTask(task.value));
+  };
 
   const saveEditTaskHandler = (): void => {
-    setEdit(!edit)
-    dispatch(saveTask(taskItem))
-  }
+    setEdit(!edit);
+    dispatch(saveTask(taskItem));
+  };
 
   const completeTaskHandler = (): void => {
-    setChecked(!checked)
-  }
+    setChecked(!checked);
+  };
 
   return (
     <div className="container__task">
@@ -80,7 +80,7 @@ const Task: FC<ITaskProps> = ({ task }): JSX.Element => {
         )}
       </div>
     </div>
-  )
+  );
 };
 
 export default Task;

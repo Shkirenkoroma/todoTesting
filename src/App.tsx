@@ -13,7 +13,7 @@ const App: FC = (): JSX.Element => {
         <TasksList />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default App;

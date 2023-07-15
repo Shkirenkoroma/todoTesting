@@ -19,7 +19,7 @@ const Button: FC<IPropsButton> = ({
         {title}
       </button>
     </>
-  )
+  );
 };
 
 export default Button;

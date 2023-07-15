@@ -25,7 +25,7 @@ const Input: FC<IInputProps> = ({
         value={value}
       />
     </>
-  )
+  );
 };
 
 export default Input;
