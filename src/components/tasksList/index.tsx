@@ -1,21 +1,17 @@
 import { FC } from 'react'
-import { useSelector } from 'react-redux'
 import { tasksArray } from 'redux/selectors'
+import { useAppSelector } from 'hooks'
+import { ITask } from './task/index.types'
 import Task from './task'
 import './style.less'
 
-export interface ITasksArrayElement {
-  id: number
-  value: string
-}
-
 const TasksList: FC = (): JSX.Element => {
-  const tasksList = useSelector(tasksArray)
+  const tasksList = useAppSelector(tasksArray)
 
   return (
     <div className="containerTasks">
-      {tasksList.map((task: ITasksArrayElement) => (
-        <Task key={task.id} task={task}/>
+      {tasksList.map((task: ITask) => (
+        <Task key={task.id} task={task} />
       ))}
     </div>
   )

@@ -1,14 +1,3 @@
- interface IStateTasks {
-  id: number
-  value: string
-}
+import { ISelector } from './types'
 
- interface ITasks {
-  tasks: Array<IStateTasks>
-}
-
- interface IState {
-  tasks: ITasks
-}
-
-export const tasksArray = (state: IState) => state?.tasks?.tasks ?? []
+export const tasksArray = (state: ISelector) => state.tasks.tasks

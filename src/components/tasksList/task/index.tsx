@@ -1,43 +1,36 @@
 import { FC, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { deleteTaskFromState, saveTaskToState } from 'redux/reducers'
+import { deleteTask, saveTask } from 'redux/reducers'
+import { ITaskProps } from './index.types'
+import { useAppDispatch } from 'hooks'
 import Button from 'components/button'
-import EditInput from 'components/elements/edit'
+import EditInput from 'components/editInput'
 import './style.less'
 
-export interface IPropsTask {
-  task: 
-  {
-    value: string
-    id: number
-  }
-}
-
-const Task: FC<IPropsTask> = ({ task }): JSX.Element => {
+const Task: FC<ITaskProps> = ({ task }): JSX.Element => {
   const [edit, setEdit] = useState<boolean>(false)
   const [valueEdit, setValueEdit] = useState<string>(task.value)
   const [checked, setChecked] = useState<boolean>(false)
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   const taskItem = {
     id: task.id,
     value: valueEdit,
   }
 
-  const editTask = (): void => {
+  const editTaskHandler = (): void => {
     setEdit(!edit)
   }
 
-  const deleteTask = (): void => {
-    dispatch(deleteTaskFromState(task.value))
+  const deleteTaskHandler = (): void => {
+    dispatch(deleteTask(task.value))
   }
 
-  const saveEditTask = (): void => {
+  const saveEditTaskHandler = (): void => {
     setEdit(!edit)
-    dispatch(saveTaskToState(taskItem))
+    dispatch(saveTask(taskItem))
   }
 
-  const completeTask = (): void => {
+  const completeTaskHandler = (): void => {
     setChecked(!checked)
   }
 
@@ -56,7 +49,7 @@ const Task: FC<IPropsTask> = ({ task }): JSX.Element => {
           </span>
           <input
             type="checkbox"
-            onChange={() => completeTask()}
+            onChange={() => completeTaskHandler()}
             checked={checked}
           />
         </div>
@@ -64,20 +57,20 @@ const Task: FC<IPropsTask> = ({ task }): JSX.Element => {
       <div className="container____content__buttons">
         <Button
           className="button__delete"
-          handleClick={deleteTask}
-          buttonName="Удалить"
+          title="Удалить"
+          handleClick={deleteTaskHandler}
         />
         {edit ? (
           <Button
             className="button"
-            handleClick={saveEditTask}
-            buttonName="Сохранить"
+            title="Сохранить"
+            handleClick={saveEditTaskHandler}
           />
         ) : (
           <Button
             className="button"
-            handleClick={editTask}
-            buttonName="Редактировать"
+            title="Редактировать"
+            handleClick={editTaskHandler}
           />
         )}
       </div>
