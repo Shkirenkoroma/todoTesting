@@ -1,4 +1,5 @@
-#### Live-версия проекта доступна по ссылке https://shkirenkoroma.github.io/todoTesting/
+#### Live-версия проекта доступна по ссылке: https://shkirenkoroma.github.io/todoTesting/
+
 Для запуска проекта достаточно склонировать репозиторий и установить необходимые зависимости - npm install, 
 далее - npm run start;
 ![image](https://github.com/Shkirenkoroma/todoTesting/assets/61347452/c4dfdc80-e2a4-4f37-893a-516d192b017d)
